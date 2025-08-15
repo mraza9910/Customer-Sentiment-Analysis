@@ -46,7 +46,7 @@ The goal was to build models capable of automatically assigning sentiment labels
 
 * Random Forest performance improved with depth until overfitting appeared
 
-* MLP showed sensitivity to both depths upto a point
+* MLP showed sensitivity to the number of hidden layers upto a point
 
 ### 📦 Tech Stack
 
