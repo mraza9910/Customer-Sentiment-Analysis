@@ -1,58 +1,63 @@
-### 📌 Customer Sentiment Analysis — Machine Learning Project
+# Customer Sentiment Analysis
 
-### Course: Machine Learning (CS 135)
-### Author: Maida Raza
+## 📌 Overview
+This project classifies customer sentiment (positive vs. negative) from product reviews collected across **Amazon, Yelp, and IMDB**.  
+The goal was to build machine learning models that can automatically assign sentiment labels to new reviews.
 
-### 📝 Overview
+---
 
-This project analyzed 2,400 single-sentence customer product reviews from Amazon, Yelp, and IMDB to classify sentiment (positive or negative) using three machine learning models:
+## 📊 Dataset
+- **2,400 single-sentence reviews** (balanced between positive and negative).  
+- Sources: `amazon.com`, `yelp.com`, `imdb.com`.  
+- Additional **600 unseen test reviews** used for final evaluation.  
 
-* Support Vector Machines (SVM)
+---
 
-* Random Forests (RF)
+## 🛠 Preprocessing
+- Removed numbers, punctuation, and non-English characters.  
+- Converted text to lowercase, normalized whitespace.  
+- Feature representations:
+  - **TF-IDF** (top 1,000 informative words).  
+  - **Bag-of-Words (BoW)** (binary presence/absence of top 1,000 words).  
 
-* Multi-Layer Perceptrons (MLP)
+---
 
-The goal was to build models capable of automatically assigning sentiment labels to new customer reviews, streamlining the feedback assessment process.
+## 🤖 Models
+Implemented and compared:
+1. **Support Vector Machines (SVM)** (RBF kernel, tuned `C` and `γ`)  
+2. **Random Forests** (tuned `n_estimators`, `max_depth`)  
+3. **Multi-Layer Perceptrons (MLP)** (varied hidden layers and learning rate, trained with Adam optimizer)
 
-### 📂 Dataset
+---
 
-* Sources: Amazon, Yelp, IMDB
+## 🔎 Key Findings
+- **SVM**: Best performance with moderate `C` (1–10) and moderate `γ` (0.01–0.1). Too large/small values caused underfitting or overfitting.  
+- **Random Forests**: Depths of 5–15 with 100–200 trees gave best bias–variance trade-off. Deeper/larger forests risked overfitting.  
+- **MLP**:  
+  - Validation performance plateaued after 2 layers.  
+  - Learning rate **1e-3** yielded the best generalization.  
+  - Achieved lowest error overall.
 
-* Size: 2,400 reviews (balanced binary labels)
+---
 
-* Labels: 1 = Positive, 0 = Negative
+## 🏆 Best Model
+- **Multi-Layer Perceptron (MLP)**  
+- Training error ≈ 0, validation error ≈ 0.2  
+- **100% accuracy** on the 600 test reviews  
 
-### 🔧 Data Preprocessing
+---
 
-* Text cleaning:
-  - Removed numbers, punctuation, non-ASCII characters
-  - Lowercased text, normalized whitespace
-  - Feature engineering:
-      * TF-IDF (top 1,000 words) to capture importance of terms
-      * Bag-of-Words (BoW) with binary presence/absence encoding
+## ⚙️ Tech Stack & Libraries
+- **Programming Language**: Python 3  
+- **Core Libraries**:
+  - `scikit-learn` → preprocessing (TF-IDF, BoW), SVM, Random Forests, cross-validation  
+  - `tensorflow.keras` → MLP model building, training, evaluation  
+  - `numpy` / `pandas` → data wrangling and matrix manipulation  
+  - `matplotlib` → plotting and visualization  
 
-### 📊 Models & Methods
+---
 
-* SVM: RBF kernel; tuned C and gamma across 5-fold stratified CV
-
-* Random Forest: Varied n_estimators and max_depth across 5-fold stratified CV
-
-* MLP: Tested varying hidden layers across 5-fold stratified CV
-
-### 📈 Key Findings
-
-* Best SVM performance at moderate gamma (0.01–0.1) and C between 1–10
-
-* Random Forest performance improved with depth until overfitting appeared
-
-* MLP showed sensitivity to the number of hidden layers upto a point
-
-### 📦 Tech Stack
-
-* Python: scikit-learn, keras, tensorflow, pandas, numpy, matplotlib
-
-* ML Methods: TF-IDF, BoW, SVM, Random Forest, MLP
-
-* Validation: 5-fold Stratified Cross-Validation
-
+## 🚀 Next Steps
+- Scale model to larger datasets.  
+- Explore word embeddings (e.g., Word2Vec, GloVe, BERT) for richer feature representation.  
+- Apply to multilingual datasets for broader applicability.   
