@@ -48,7 +48,7 @@ Implemented and compared:
 ---
 
 ## ⚙️ Tech Stack & Libraries
-- **Programming Language**: Python 3  
+- **Programming Language**: Python 
 - **Core Libraries**:
   - `scikit-learn` → preprocessing (TF-IDF, BoW), SVM, Random Forests, cross-validation  
   - `tensorflow.keras` → MLP model building, training, evaluation  
